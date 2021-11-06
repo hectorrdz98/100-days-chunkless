@@ -131,7 +131,7 @@ public class ChunksController {
             chunkPorBorrar.forEach(coords -> {
                 AtomicInteger chunkX = new AtomicInteger(coords[0]);
                 AtomicInteger chunkZ = new AtomicInteger(coords[1]);
-                task.addWithDelay(() -> deleteChunk(overworld, chunkX.get(), chunkZ.get()), 500);
+                task.addWithDelay(() -> deleteChunk(overworld, chunkX.get(), chunkZ.get()), 5000);
             });
             ServerUtilities.sendBroadcastMessage(ServerUtilities.getMiniMessage().parse(
                     "<color:#2E6F95>Se van a borrar</color> <bold><color:#0091AD>" +
@@ -146,7 +146,7 @@ public class ChunksController {
             Chunk chunk = world.getChunkAt(chunkX, chunkZ);
             if (chunk.load()) {
                 if (this.notDeletedChunk(chunkX, chunkZ)) {
-                    for (int y = 0; y < 128; ++y) {
+                    for (int y = 0; y < 256; ++y) {
                         for (int x = 0; x < 16; ++x) {
                             for (int z = 0; z < 16; ++z) {
                                 Block block = chunk.getBlock(x, y, z);
