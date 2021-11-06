@@ -1,0 +1,17 @@
+name: HundredDaysUHC
+version: '${project.version}'
+main: dev.sasukector.hundreddaysuhc.HundredDaysUHC
+api-version: 1.17
+authors: [ Sasukector ]
+description: This is the core plugin for HundredDaysUHC
+website: https://sasukector.dev
+commands:
+  deaths:
+    description: Command to see death players
+    usage: /deaths
+  played:
+    description: Command to see played time of a player
+    usage: /played [playerName]
+  toggleDays:
+    description: Command to toggle days display
+    usage: /toggleDays
