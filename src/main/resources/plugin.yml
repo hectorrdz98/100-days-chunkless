@@ -1,14 +1,11 @@
-name: HundredDaysUHC
+name: HundredDaysChunkLess
 version: '${project.version}'
-main: dev.sasukector.hundreddaysuhc.HundredDaysUHC
+main: dev.sasukector.hundreddayschunkless.HundredDaysChunkLess
 api-version: 1.17
 authors: [ Sasukector ]
-description: This is the core plugin for HundredDaysUHC
+description: This is the core plugin for HundredDaysChunkLess
 website: https://sasukector.dev
 commands:
-  deaths:
-    description: Command to see death players
-    usage: /deaths
   played:
     description: Command to see played time of a player
     usage: /played [playerName]

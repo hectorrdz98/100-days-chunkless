@@ -16,7 +16,7 @@ public class ToggleDaysCommand implements CommandExecutor {
             player.playSound(player.getLocation(), "minecraft:block.note_block.bell", 1, 1);
             BoardController.getInstance().setHideDays(!BoardController.getInstance().isHideDays());
             ServerUtilities.sendServerMessage(player, "Se han " +
-                    (BoardController.getInstance().isHideDays() ? "mostrado" : "ocultado") + " los días");
+                    (BoardController.getInstance().isHideDays() ? "ocultado" : "mostrado") + " los días");
         } else if (sender instanceof Player player) {
             ServerUtilities.sendServerMessage(player, "§cPermisos insuficientes");
         }

@@ -3,6 +3,7 @@ package dev.sasukector.hundreddayschunkless.controllers;
 import dev.sasukector.hundreddayschunkless.HundredDaysChunkLess;
 import dev.sasukector.hundreddayschunkless.helpers.ServerUtilities;
 import lombok.Getter;
+import org.bukkit.Bukkit;
 import org.bukkit.World;
 import org.bukkit.scheduler.BukkitRunnable;
 
@@ -32,6 +33,7 @@ public class GameController {
         this.schedulerID = new BukkitRunnable() {
             @Override
             public void run() {
+                Bukkit.getLogger().info("Toca revisión de chunks");
                 ChunksController.getInstance().saveDeletedChunksToFile();
                 World overworld = ServerUtilities.getOverworld();
                 if (overworld != null) {
