@@ -1,4 +1,4 @@
-package dev.sasukector.hundreddayschunkless.helpers;
+package dev.sasukector.hundreddaysbase.helpers;
 
 import lombok.Getter;
 import lombok.Setter;

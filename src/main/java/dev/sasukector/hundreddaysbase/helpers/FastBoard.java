@@ -21,7 +21,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package dev.sasukector.hundreddayschunkless.helpers;
+package dev.sasukector.hundreddaysbase.helpers;
 
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
@@ -61,11 +61,11 @@ public class FastBoard {
     private static final MethodHandle SEND_PACKET;
     private static final MethodHandle PLAYER_GET_HANDLE;
     // Scoreboard packets
-    private static final dev.sasukector.hundreddayschunkless.helpers.FastReflection.PacketConstructor PACKET_SB_OBJ;
-    private static final dev.sasukector.hundreddayschunkless.helpers.FastReflection.PacketConstructor PACKET_SB_DISPLAY_OBJ;
-    private static final dev.sasukector.hundreddayschunkless.helpers.FastReflection.PacketConstructor PACKET_SB_SCORE;
-    private static final dev.sasukector.hundreddayschunkless.helpers.FastReflection.PacketConstructor PACKET_SB_TEAM;
-    private static final dev.sasukector.hundreddayschunkless.helpers.FastReflection.PacketConstructor PACKET_SB_SERIALIZABLE_TEAM;
+    private static final dev.sasukector.hundreddaysbase.helpers.FastReflection.PacketConstructor PACKET_SB_OBJ;
+    private static final dev.sasukector.hundreddaysbase.helpers.FastReflection.PacketConstructor PACKET_SB_DISPLAY_OBJ;
+    private static final dev.sasukector.hundreddaysbase.helpers.FastReflection.PacketConstructor PACKET_SB_SCORE;
+    private static final dev.sasukector.hundreddaysbase.helpers.FastReflection.PacketConstructor PACKET_SB_TEAM;
+    private static final dev.sasukector.hundreddaysbase.helpers.FastReflection.PacketConstructor PACKET_SB_SERIALIZABLE_TEAM;
     // Scoreboard enums
     private static final Class<?> ENUM_SB_HEALTH_DISPLAY;
     private static final Class<?> ENUM_SB_ACTION;
@@ -77,45 +77,45 @@ public class FastBoard {
         try {
             MethodHandles.Lookup lookup = MethodHandles.lookup();
 
-            if (dev.sasukector.hundreddayschunkless.helpers.FastReflection.isRepackaged()) {
+            if (dev.sasukector.hundreddaysbase.helpers.FastReflection.isRepackaged()) {
                 VERSION_TYPE = VersionType.V1_17;
-            } else if (dev.sasukector.hundreddayschunkless.helpers.FastReflection.nmsOptionalClass(null, "ScoreboardServer$Action").isPresent()) {
+            } else if (dev.sasukector.hundreddaysbase.helpers.FastReflection.nmsOptionalClass(null, "ScoreboardServer$Action").isPresent()) {
                 VERSION_TYPE = VersionType.V1_13;
-            } else if (dev.sasukector.hundreddayschunkless.helpers.FastReflection.nmsOptionalClass(null, "IScoreboardCriteria$EnumScoreboardHealthDisplay").isPresent()) {
+            } else if (dev.sasukector.hundreddaysbase.helpers.FastReflection.nmsOptionalClass(null, "IScoreboardCriteria$EnumScoreboardHealthDisplay").isPresent()) {
                 VERSION_TYPE = VersionType.V1_8;
             } else {
                 VERSION_TYPE = VersionType.V1_7;
             }
 
             String gameProtocolPackage = "network.protocol.game";
-            Class<?> craftPlayerClass = dev.sasukector.hundreddayschunkless.helpers.FastReflection.obcClass("entity.CraftPlayer");
-            Class<?> craftChatMessageClass = dev.sasukector.hundreddayschunkless.helpers.FastReflection.obcClass("util.CraftChatMessage");
-            Class<?> entityPlayerClass = dev.sasukector.hundreddayschunkless.helpers.FastReflection.nmsClass("server.level", "EntityPlayer");
-            Class<?> playerConnectionClass = dev.sasukector.hundreddayschunkless.helpers.FastReflection.nmsClass("server.network", "PlayerConnection");
-            Class<?> packetClass = dev.sasukector.hundreddayschunkless.helpers.FastReflection.nmsClass("network.protocol", "Packet");
-            Class<?> packetSbObjClass = dev.sasukector.hundreddayschunkless.helpers.FastReflection.nmsClass(gameProtocolPackage, "PacketPlayOutScoreboardObjective");
-            Class<?> packetSbDisplayObjClass = dev.sasukector.hundreddayschunkless.helpers.FastReflection.nmsClass(gameProtocolPackage, "PacketPlayOutScoreboardDisplayObjective");
-            Class<?> packetSbScoreClass = dev.sasukector.hundreddayschunkless.helpers.FastReflection.nmsClass(gameProtocolPackage, "PacketPlayOutScoreboardScore");
-            Class<?> packetSbTeamClass = dev.sasukector.hundreddayschunkless.helpers.FastReflection.nmsClass(gameProtocolPackage, "PacketPlayOutScoreboardTeam");
+            Class<?> craftPlayerClass = dev.sasukector.hundreddaysbase.helpers.FastReflection.obcClass("entity.CraftPlayer");
+            Class<?> craftChatMessageClass = dev.sasukector.hundreddaysbase.helpers.FastReflection.obcClass("util.CraftChatMessage");
+            Class<?> entityPlayerClass = dev.sasukector.hundreddaysbase.helpers.FastReflection.nmsClass("server.level", "EntityPlayer");
+            Class<?> playerConnectionClass = dev.sasukector.hundreddaysbase.helpers.FastReflection.nmsClass("server.network", "PlayerConnection");
+            Class<?> packetClass = dev.sasukector.hundreddaysbase.helpers.FastReflection.nmsClass("network.protocol", "Packet");
+            Class<?> packetSbObjClass = dev.sasukector.hundreddaysbase.helpers.FastReflection.nmsClass(gameProtocolPackage, "PacketPlayOutScoreboardObjective");
+            Class<?> packetSbDisplayObjClass = dev.sasukector.hundreddaysbase.helpers.FastReflection.nmsClass(gameProtocolPackage, "PacketPlayOutScoreboardDisplayObjective");
+            Class<?> packetSbScoreClass = dev.sasukector.hundreddaysbase.helpers.FastReflection.nmsClass(gameProtocolPackage, "PacketPlayOutScoreboardScore");
+            Class<?> packetSbTeamClass = dev.sasukector.hundreddaysbase.helpers.FastReflection.nmsClass(gameProtocolPackage, "PacketPlayOutScoreboardTeam");
             Class<?> sbTeamClass = VersionType.V1_17.isHigherOrEqual()
-                    ? dev.sasukector.hundreddayschunkless.helpers.FastReflection.innerClass(packetSbTeamClass, innerClass -> !innerClass.isEnum()) : null;
+                    ? dev.sasukector.hundreddaysbase.helpers.FastReflection.innerClass(packetSbTeamClass, innerClass -> !innerClass.isEnum()) : null;
             Field playerConnectionField = Arrays.stream(entityPlayerClass.getFields())
                     .filter(field -> field.getType().isAssignableFrom(playerConnectionClass))
                     .findFirst().orElseThrow(NoSuchFieldException::new);
 
             MESSAGE_FROM_STRING = lookup.unreflect(craftChatMessageClass.getMethod("fromString", String.class));
-            CHAT_COMPONENT_CLASS = dev.sasukector.hundreddayschunkless.helpers.FastReflection.nmsClass("network.chat", "IChatBaseComponent");
-            CHAT_FORMAT_ENUM = dev.sasukector.hundreddayschunkless.helpers.FastReflection.nmsClass(null, "EnumChatFormat");
+            CHAT_COMPONENT_CLASS = dev.sasukector.hundreddaysbase.helpers.FastReflection.nmsClass("network.chat", "IChatBaseComponent");
+            CHAT_FORMAT_ENUM = dev.sasukector.hundreddaysbase.helpers.FastReflection.nmsClass(null, "EnumChatFormat");
             EMPTY_MESSAGE = Array.get(MESSAGE_FROM_STRING.invoke(""), 0);
-            RESET_FORMATTING = dev.sasukector.hundreddayschunkless.helpers.FastReflection.enumValueOf(CHAT_FORMAT_ENUM, "RESET", 21);
+            RESET_FORMATTING = dev.sasukector.hundreddaysbase.helpers.FastReflection.enumValueOf(CHAT_FORMAT_ENUM, "RESET", 21);
             PLAYER_GET_HANDLE = lookup.findVirtual(craftPlayerClass, "getHandle", MethodType.methodType(entityPlayerClass));
             PLAYER_CONNECTION = lookup.unreflectGetter(playerConnectionField);
             SEND_PACKET = lookup.findVirtual(playerConnectionClass, "sendPacket", MethodType.methodType(void.class, packetClass));
-            PACKET_SB_OBJ = dev.sasukector.hundreddayschunkless.helpers.FastReflection.findPacketConstructor(packetSbObjClass, lookup);
-            PACKET_SB_DISPLAY_OBJ = dev.sasukector.hundreddayschunkless.helpers.FastReflection.findPacketConstructor(packetSbDisplayObjClass, lookup);
-            PACKET_SB_SCORE = dev.sasukector.hundreddayschunkless.helpers.FastReflection.findPacketConstructor(packetSbScoreClass, lookup);
-            PACKET_SB_TEAM = dev.sasukector.hundreddayschunkless.helpers.FastReflection.findPacketConstructor(packetSbTeamClass, lookup);
-            PACKET_SB_SERIALIZABLE_TEAM = sbTeamClass == null ? null : dev.sasukector.hundreddayschunkless.helpers.FastReflection.findPacketConstructor(sbTeamClass, lookup);
+            PACKET_SB_OBJ = dev.sasukector.hundreddaysbase.helpers.FastReflection.findPacketConstructor(packetSbObjClass, lookup);
+            PACKET_SB_DISPLAY_OBJ = dev.sasukector.hundreddaysbase.helpers.FastReflection.findPacketConstructor(packetSbDisplayObjClass, lookup);
+            PACKET_SB_SCORE = dev.sasukector.hundreddaysbase.helpers.FastReflection.findPacketConstructor(packetSbScoreClass, lookup);
+            PACKET_SB_TEAM = dev.sasukector.hundreddaysbase.helpers.FastReflection.findPacketConstructor(packetSbTeamClass, lookup);
+            PACKET_SB_SERIALIZABLE_TEAM = sbTeamClass == null ? null : dev.sasukector.hundreddaysbase.helpers.FastReflection.findPacketConstructor(sbTeamClass, lookup);
 
             for (Class<?> clazz : Arrays.asList(packetSbObjClass, packetSbDisplayObjClass, packetSbScoreClass, packetSbTeamClass, sbTeamClass)) {
                 if (clazz == null) {
@@ -134,11 +134,11 @@ public class FastBoard {
                 String enumSbActionClass = VersionType.V1_13.isHigherOrEqual()
                         ? "ScoreboardServer$Action"
                         : "PacketPlayOutScoreboardScore$EnumScoreboardAction";
-                ENUM_SB_HEALTH_DISPLAY = dev.sasukector.hundreddayschunkless.helpers.FastReflection.nmsClass("world.scores.criteria", "IScoreboardCriteria$EnumScoreboardHealthDisplay");
-                ENUM_SB_ACTION = dev.sasukector.hundreddayschunkless.helpers.FastReflection.nmsClass("server", enumSbActionClass);
-                ENUM_SB_HEALTH_DISPLAY_INTEGER = dev.sasukector.hundreddayschunkless.helpers.FastReflection.enumValueOf(ENUM_SB_HEALTH_DISPLAY, "INTEGER", 0);
-                ENUM_SB_ACTION_CHANGE = dev.sasukector.hundreddayschunkless.helpers.FastReflection.enumValueOf(ENUM_SB_ACTION, "CHANGE", 0);
-                ENUM_SB_ACTION_REMOVE = dev.sasukector.hundreddayschunkless.helpers.FastReflection.enumValueOf(ENUM_SB_ACTION, "REMOVE", 1);
+                ENUM_SB_HEALTH_DISPLAY = dev.sasukector.hundreddaysbase.helpers.FastReflection.nmsClass("world.scores.criteria", "IScoreboardCriteria$EnumScoreboardHealthDisplay");
+                ENUM_SB_ACTION = dev.sasukector.hundreddaysbase.helpers.FastReflection.nmsClass("server", enumSbActionClass);
+                ENUM_SB_HEALTH_DISPLAY_INTEGER = dev.sasukector.hundreddaysbase.helpers.FastReflection.enumValueOf(ENUM_SB_HEALTH_DISPLAY, "INTEGER", 0);
+                ENUM_SB_ACTION_CHANGE = dev.sasukector.hundreddaysbase.helpers.FastReflection.enumValueOf(ENUM_SB_ACTION, "CHANGE", 0);
+                ENUM_SB_ACTION_REMOVE = dev.sasukector.hundreddaysbase.helpers.FastReflection.enumValueOf(ENUM_SB_ACTION, "REMOVE", 1);
             } else {
                 ENUM_SB_HEALTH_DISPLAY = null;
                 ENUM_SB_ACTION = null;

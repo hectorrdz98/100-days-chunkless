@@ -1,4 +1,4 @@
-package dev.sasukector.hundreddayschunkless.helpers.TCT;
+package dev.sasukector.hundreddaysbase.helpers.TCT;
 
 /**
  * Utility Runnable that eases the creation of delayed tasks.

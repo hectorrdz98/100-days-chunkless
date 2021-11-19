@@ -1,6 +1,6 @@
-package dev.sasukector.hundreddayschunkless.events;
+package dev.sasukector.hundreddaysbase.events;
 
-import dev.sasukector.hundreddayschunkless.controllers.BoardController;
+import dev.sasukector.hundreddaysbase.controllers.BoardController;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.TextColor;
 import org.bukkit.entity.Player;

@@ -1,4 +1,4 @@
-package dev.sasukector.hundreddayschunkless.helpers.TCT;
+package dev.sasukector.hundreddaysbase.helpers.TCT;
 
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ConcurrentLinkedQueue;

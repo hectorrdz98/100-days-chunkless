@@ -1,8 +1,8 @@
-package dev.sasukector.hundreddayschunkless.controllers;
+package dev.sasukector.hundreddaysbase.controllers;
 
-import dev.sasukector.hundreddayschunkless.HundredDaysChunkLess;
-import dev.sasukector.hundreddayschunkless.helpers.FastBoard;
-import dev.sasukector.hundreddayschunkless.helpers.ServerUtilities;
+import dev.sasukector.hundreddaysbase.HundredDaysBase;
+import dev.sasukector.hundreddaysbase.helpers.FastBoard;
+import dev.sasukector.hundreddaysbase.helpers.ServerUtilities;
 import lombok.Getter;
 import lombok.Setter;
 import org.bukkit.Bukkit;
@@ -26,7 +26,7 @@ public class BoardController {
     }
 
     public BoardController() {
-        Bukkit.getScheduler().runTaskTimer(HundredDaysChunkLess.getInstance(), this::updateBoards, 0L, 20L);
+        Bukkit.getScheduler().runTaskTimer(HundredDaysBase.getInstance(), this::updateBoards, 0L, 20L);
         this.hideDays = false;
     }
 

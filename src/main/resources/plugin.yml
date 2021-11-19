@@ -1,9 +1,9 @@
-name: HundredDaysChunkLess
+name: HundredDaysBase
 version: '${project.version}'
-main: dev.sasukector.hundreddayschunkless.HundredDaysChunkLess
+main: dev.sasukector.hundreddaysbase.HundredDaysBase
 api-version: 1.17
 authors: [ Sasukector ]
-description: This is the core plugin for HundredDaysChunkLess
+description: This is the core plugin for HundredDaysBase
 website: https://sasukector.dev
 commands:
   played:

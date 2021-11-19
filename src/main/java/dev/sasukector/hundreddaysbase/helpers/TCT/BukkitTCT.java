@@ -1,4 +1,4 @@
-package dev.sasukector.hundreddayschunkless.helpers.TCT;
+package dev.sasukector.hundreddaysbase.helpers.TCT;
 
 import org.bukkit.plugin.Plugin;
 import org.bukkit.scheduler.BukkitRunnable;
